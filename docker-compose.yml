@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      MONGO_URI: "mongodb+srv://samrudhigholba4203:1bi4KuhlSYKt4t8w@cluster1.ztkuf.mongodb.net/todoDB?retryWrites=true&w=majority&appName=Cluster1"
+    volumes:
+      - .:/app
+    restart: always
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+
+volumes:
+  mongo_data:
