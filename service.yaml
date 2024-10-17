@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-mongo-todo-app
+  labels:
+    app: flask-mongo-todo-app
+spec:
+  type: ClusterIP  # Change to NodePort or LoadBalancer as needed
+  selector:
+    app: flask-mongo-todo-app  # Match the label from your Deployment or Pod
+  ports:
+    - protocol: TCP
+      port: 80            # Port that the service will expose
+      targetPort: 5000    # Port that your Flask application is running on
